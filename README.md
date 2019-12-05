@@ -8,13 +8,13 @@
 |username|string|null: false|
 ### Association
 - has_many :user_group
-- has_many :messege
-- has_many  :group,  through:  :user_group
+- has_many :messeges
+- has_many :groups,  through:  :user_group
 
-## groupテーブル
+## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|title|title|null: false|
+|groupname|groupname|null: false|
 ### Association
 - has_many :user_group
 - has_many :messages
