@@ -7,8 +7,9 @@
 |password|string|null: false|
 |username|string|null: false|
 ### Association
-- has_many :posts
+- has_many :user_group
 - has_many :messege
+- has_many  :group,  through:  :user_group
 
 ## groupテーブル
 |Column|Type|Options|
@@ -16,7 +17,9 @@
 |title|title|null: false|
 ### Association
 - has_many :user_group
+- has_many :messages
 - has_many  :users,  through:  :user_group
+
 
 ## user_groupテーブル
 |Column|Type|Options|
@@ -24,16 +27,16 @@
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :user
+- belongs_to :users
 - belongs_to :group
 
 ## messagageテーブル
 |Column|Type|Options|
 |------|----|-------|
-|text|text|null: false|
+|text|text|null: true|
 |image|image|null: true|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :user
+- belongs_to :users
 - belongs_to :group
