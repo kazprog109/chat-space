@@ -1,13 +1,14 @@
 .side_bar
   .side_header
     .side_header_box
-      %p.side_header_box_user_name matsu
+      %p.side_header_box_user_name       
+      = current_user.name
       %ul.side_header_box_menu
         %li.side_header_box_menu_new_group
           = link_to "#" do
             %i.fa.fa-edit
         %i.side_header_box_menu_edit
-          = link_to "#" do
+          = link_to edit_user_path(current_user) do
             %li.fas.fa-cog
     
   .side_contents
