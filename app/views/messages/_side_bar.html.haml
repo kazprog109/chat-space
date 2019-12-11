@@ -2,10 +2,10 @@
   .side_header
     .side_header_box
       %p.side_header_box_user_name       
-      = current_user.name
+        = current_user.name
       %ul.side_header_box_menu
         %li.side_header_box_menu_new_group
-          = link_to "#" do
+          = link_to new_group_path do
             %i.fa.fa-edit
         %i.side_header_box_menu_edit
           = link_to edit_user_path(current_user) do
@@ -13,8 +13,12 @@
     
   .side_contents
     .side_contents_groups
-      .side_contents_groups_title こんにちは
-      .side_contents_groups_message メッセージはありません
+      .side_contents_groups_title 
+        こんにちは
+      .side_contents_groups_message 
+        メッセージはありません
     .side_contents_groups
-      .side_contents_groups_title こんにちは
-      .side_contents_groups_message メッセージはありません
+      .side_contents_groups_title 
+        こんにちは
+      .side_contents_groups_message 
+        メッセージはありません
