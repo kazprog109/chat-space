@@ -12,13 +12,10 @@
             %li.fas.fa-cog
     
   .side_contents
-    .side_contents_groups
-      .side_contents_groups_title 
-        こんにちは
-      .side_contents_groups_message 
-        メッセージはありません
-    .side_contents_groups
-      .side_contents_groups_title 
-        こんにちは
-      .side_contents_groups_message 
-        メッセージはありません
+    - current_user.groups.each do |group|
+      .side_contents_groups
+        = link_to group_messages_path(group) do
+          .side_contents_groups_title 
+            = group.name
+          .side_contents_groups_message 
+            メッセージはありません
