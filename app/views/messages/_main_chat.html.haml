@@ -1,27 +1,27 @@
 .contents
   .contents_hedder
     .contents_hedder_left
-      .contents_hedder_name 紅茶花伝
-      .contents_hedder_messege group: qqq,eee
-    = link_to "#" do
+      .contents_hedder_name 
+        = @group.name
+      .contents_hedder_messege 
+        = @group.users.name
+    = link_to edit_group_path(current_user) do
       .contents_hedder_right Edit
   .contents_main
-    .contents_main_message
-      .contents_main_message_top
-        .contents_main_message_top_username matsu
-        .contents_main_message_top_date 2019/12/8/13:05
-      .contents_main_message_text おはよう！
-      .contents_main_message_top
-        .contents_main_message_top_username komatsu
-        .contents_main_message_top_date 2019/12/8/13:13
-      .contents_main_message_text おはよう!!!
+    //.contents_main_message
+    .contents_main_message_text 
+      = render @messages
+      //.contents_main_message_top
+      .contents_main_message_top_username 
+      .contents_main_message_top_date 
+    
     
   .contents_fotter
     .contents_fotter_box
-      .contents_fotter_box_text type a message
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
       %label{class: "image_choice"}
         = icon('fas', 'image')
         %input{type: "file"}
-
     = link_to "#", class: "contents_fotter_box_right" do
       Sent
