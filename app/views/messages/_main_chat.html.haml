@@ -8,20 +8,17 @@
     = link_to edit_group_path(current_user) do
       .contents_hedder_right Edit
   .contents_main
-    //.contents_main_message
-    .contents_main_message_text 
+    .contents_main_message_text
       = render @messages
-      //.contents_main_message_top
-      .contents_main_message_top_username 
-      .contents_main_message_top_date 
-    
+   
     
   .contents_fotter
     .contents_fotter_box
       = form_for [@group, @message] do |f|
-        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
-      %label{class: "image_choice"}
-        = icon('fas', 'image')
-        %input{type: "file"}
-    = link_to "#", class: "contents_fotter_box_right" do
-      Sent
+        .contents_fotter_box_image
+          = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        %label{class: "image_choice"} 
+          = icon('fas', 'image')
+          = f.file_field :image, class: 'image'
+        =  f.submit 'Send', class: 'input-send'
+        
