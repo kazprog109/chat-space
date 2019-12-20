@@ -4,7 +4,10 @@
       .contents_hedder_name 
         = @group.name
       .contents_hedder_messege 
-        = @group.users.name
+        Menber : 
+        - @group.users.each do |user|
+          = user.name
+    
     = link_to edit_group_path(current_user) do
       .contents_hedder_right Edit
   .contents_main

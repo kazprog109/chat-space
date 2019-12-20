@@ -26,6 +26,7 @@
   height: calc(100vh - 100px);
   width: 300px;
   padding: 20px 20px 0 ;
+  overflow: scroll;
 
   &_groups {
     width: 100%;
@@ -141,7 +142,7 @@
   overflow: scroll;
 
   .lower-message{
-
+    color: black;
   }
 
 

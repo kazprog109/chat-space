@@ -2,13 +2,13 @@ $(function(){
 
   function buildHTML(message){
     if (message.image) {
-      var html =  `<div class="message">
+      var html =  `<div class="message" data-message-id="${message.id}">
                     <div class="upper-message">
                       <div class="upper-message__user-name">
                         ${message.user_name}
                       </div>
                       <div class="upper-message__date">
-                        ${message.updated_at}
+                        ${message.created_at}
                       </div>
                     </div>
                     <p class="lower-message__content">
@@ -18,13 +18,13 @@ $(function(){
                     </div>
                   </div>`
     } else {
-      var html =  `<div class="message">
+      var html =  `<div class="message" data-message-id="${message.id}">
                     <div class="upper-message">
                       <div class="upper-message__user-name">
                         ${message.user_name}
                       </div>
                       <div class="upper-message__date">
-                        ${message.updated_at}
+                        ${message.created_at}
                       </div>
                     </div>
                     <p class="lower-message__content">
@@ -43,8 +43,8 @@ $(function(){
     
 
     $.ajax({
-      url: url,  //同期通信でいう『パス』
-      type: 'POST',  //同期通信でいう『HTTPメソッド』
+      url: url,  
+      type: 'POST',  
       data: formDate,  
       dataType: 'json',
       processData: false,
@@ -55,7 +55,7 @@ $(function(){
     .done(function(message){
       var html = buildHTML(message);
       $('.contents_main_message_text').append(html);
-      $('.contents_main').animate({ scrollTop: $('.contents_main')[0].scrollHeight});
+      $('.cnontents_main').animate({ scrollTop: $('.contents_main')[0].scrollHeight});
       $('.new_message')[0].reset();    
       $('.input-send').prop('disabled', false); 
     })
@@ -63,5 +63,36 @@ $(function(){
       alert('メッセージ送信に失敗しました')
     })
   })
-})
+
+  
+  var reloadMessages = function () {
+      last_message_id = $('.message:last').data("message-id");
+   
+    $.ajax({
+      url: "api/messages",
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id}
+      
+    })
+    
+
+    .done(function(messages) {
+      var insertHTML = '';
+      $.each(messages, function(i, message) {
+        insertHTML += buildHTML(message)
+      });
+      $('.contents_main_message_text').append(insertHTML);
+      $('.contents_main').animate({ scrollTop: $('.contents_main')[0].scrollHeight}, 'fast');
+    })
+    .fail(function() {
+      alert('自動更新に失敗しました')
+      
+    });
+  
+  };
+  if (document.location.href.match(/\/groups\/\d+\/messages/)) {
+  setInterval(reloadMessages, 5000);
+  };
+});
 
