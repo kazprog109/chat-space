@@ -8,7 +8,7 @@
         - @group.users.each do |user|
           = user.name
     
-    = link_to edit_group_path(current_user) do
+    = link_to edit_group_path(@group.id) do
       .contents_hedder_right Edit
   .contents_main
     .contents_main_message_text

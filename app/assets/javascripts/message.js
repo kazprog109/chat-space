@@ -55,7 +55,7 @@ $(function(){
     .done(function(message){
       var html = buildHTML(message);
       $('.contents_main_message_text').append(html);
-      $('.cnontents_main').animate({ scrollTop: $('.contents_main')[0].scrollHeight});
+      $('.contents_main').animate({ scrollTop: $('.contents_main')[0].scrollHeight});
       $('.new_message')[0].reset();    
       $('.input-send').prop('disabled', false); 
     })
@@ -83,7 +83,7 @@ $(function(){
         insertHTML += buildHTML(message)
       });
       $('.contents_main_message_text').append(insertHTML);
-      $('.contents_main').animate({ scrollTop: $('.contents_main')[0].scrollHeight}, 'fast');
+      $('.contents_main').animate({ scrollTop: $('.contents_main')[0].scrollHeight});
     })
     .fail(function() {
       alert('自動更新に失敗しました')

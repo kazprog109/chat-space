@@ -172,9 +172,12 @@
   padding: 20px 40px;
   background-color: #d2d2d2;
   display: flex;
+  
 
   .new_message{
     display: flex;
+    width: 100%;
+    justify-content: start;;
   }
 
 
@@ -184,7 +187,6 @@
     line-height: 50px;
     padding: 0 20px;
     border: solid 1px #38aef0;
-    margin-left: 15px;
     background-color: #38aef0;
     text-decoration: none;
     color: white;
@@ -194,22 +196,29 @@
     height: 50px;
     display: flex;
     align-items: center;
-    width: 550px;
     background-color: white;
     justify-content: space-between;
-    padding: 0 15px;
     color: #d2d2d2;
+    width: 100%;
+    margin-right: 20px;
 
     &_image{
       display: flex;
+      
+    }
+
+    .new_message {
+      background-color: #d2d2d2;
     }
 
   .form__message{
     height: 50px;
-    width: 500px;
+    width: 950px;
     padding: 0 20px 0 10px;
     color: #434a54;
     border-style: none;
+
+
     
 
     }
@@ -220,10 +229,11 @@
   input{
   display: none;
   }
-  margin-right: 10px;
+  padding-right: 10px;
   font-size: 1.5em;
   color: black;
   padding-top: 10px;
+  background-color: white;
   
 }
 
